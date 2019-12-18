@@ -1,7 +1,7 @@
 <template>
   <div justify-content-center id="app">
     <v-app id="title">
-      <v-h1 class="display-2 text-center mt-2">Scrobblebot</v-h1>
+      <h1 class="display-2 text-center mt-2">Scrobblebot</h1>
       <v-content>
         <!-- Provides the application the proper gutter -->
         <v-container fluid>
