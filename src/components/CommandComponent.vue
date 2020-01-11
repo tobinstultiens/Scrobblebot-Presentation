@@ -1,20 +1,18 @@
 <template>
   <div>
-    <h2>{{ msg }}</h2>
-    <v-btn class="primary" text @click="connectClick"></v-btn>
+    <h1>{{ command.Username }}</h1>
+    <h2>{{ command.Message }}</h2>
   </div>
 </template>
 
 <script lang="ts">
+/* eslint-disable no-unused-vars */
 import { Component, Prop, Vue } from "vue-property-decorator";
-import {connect} from "@/websockets/websocket.ts"
+import { Command } from "../websockets/commandMessage";
 
-@Component
-export default class CommandComponent extends Vue {
-  @Prop() private msg!: string;
-
-  connectClick():void{
-    connect();
-  }
-}
+var url = "ws://localhost:8080/gs-guide-websocket";
+@Component({
+  props: ["command"]
+})
+export default class CommandComponent extends Vue {}
 </script>

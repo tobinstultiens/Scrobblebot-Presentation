@@ -1,14 +1,14 @@
-import SockJS from 'sockjs-client';
-import webstomp from 'webstomp-client';
+/* eslint-disable no-unused-vars */
+import webstomp, { Client } from 'webstomp-client';
 
-var url = "http://localhost:8080/gs-guide-websocket";
+var url = "ws://localhost:8080/gs-guide-websocket";
+let stompClient: Client;
 
-export function connect(){
-    var ws = new SockJS(url);
-    var stompClient = webstomp.over(ws);
+export function connect() {
+    stompClient = webstomp.client(url);
     stompClient.connect({}, function (frame) {
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/client', function (greeting) {
+        stompClient.subscribe('/client/message', function (greeting) {
             console.log(greeting)
         });
     });

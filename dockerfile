@@ -12,7 +12,7 @@ COPY package.json /app/package.json
 COPY package-lock.json /app/package-lock.json
 COPY tsconfig.json /app/tsconfig.json
 RUN npm install
-RUN npm install @vue/cli@3.7.0 -g
+RUN npm install @vue/cli -g
 
 # start app
 CMD ["npm", "run", "serve"]
