@@ -26,7 +26,7 @@ var url = "ws://localhost:8080/gs-guide-websocket";
     stompClient.connect({}, () => {
       console.log("Connected!");
       stompClient.subscribe("/client/message", function(greeting) {
-        const command: Command = decodeUser(greeting.body);
+        const command: Command = decodeMessage(greeting.body);
         console.log(command);
         commandArray.push(command);
       });
@@ -34,7 +34,7 @@ var url = "ws://localhost:8080/gs-guide-websocket";
   }
 })
 export default class CommandListComponent extends Vue {}
-function decodeUser(json: string): Command {
+function decodeMessage(json: string): Command {
   const command: Command = JSON.parse(json) as Command;
   return command;
 }
